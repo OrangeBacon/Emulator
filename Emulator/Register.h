@@ -7,14 +7,15 @@ class Register :
 	public Component
 {
 public:
-	Register();
+	Register(const std::string& name);
 	~Register();
 
-    void Initialise(int16_t* bus) override;
+    void Initialise(int16_t* bus, Microcode* microcode) override;
+
+private:
     void BusRead();
-
-
 public:
     int16_t m_value;
+    const std::string& m_name;
 };
 

@@ -117,12 +117,15 @@
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Microcode.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="VMCore.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
+    <ClInclude Include="Microcode.h" />
     <ClInclude Include="Register.h" />
+    <ClInclude Include="Util.h" />
     <ClInclude Include="VMCore.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

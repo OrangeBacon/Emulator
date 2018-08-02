@@ -1,14 +1,19 @@
 #include <iostream>
 #include "VMCore.h"
 #include "Register.h"
+#include "Microcode.h"
+#include "Util.h"
 
 int main(int argv, char* argc) {
-	VMCore vm{};
-    Register reg {};
+    Microcode microcode {};
+    VMCore vm {&microcode};
+    Register reg("A");
 
     vm.AddComponent(&reg);
     vm.BusWrite(7);
-    reg.BusRead();
+    
+    mcLine(command, "Bus -> Register A");
+    microcode.Run(&command);
 
     std::cout << reg.m_value << std::endl;
 
