@@ -12,6 +12,6 @@ Component::~Component()
 {
 }
 
-void Component::Initialise(int16_t * bus, Microcode* microcode) {
+void Component::Initialise(std::shared_ptr<int16_t> bus, Microcode* microcode) {
     m_bus = bus;
 }

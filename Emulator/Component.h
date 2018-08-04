@@ -9,9 +9,9 @@ public:
 	Component();
 	virtual ~Component();
 
-    virtual void Initialise(int16_t* bus, Microcode* microcode);
+    virtual void Initialise(std::shared_ptr<int16_t> bus, Microcode* microcode);
 
 protected:
-    int16_t* m_bus;
+    std::shared_ptr<int16_t> m_bus;
 };
 

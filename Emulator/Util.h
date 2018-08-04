@@ -1,8 +1,14 @@
 #pragma once
 
-#define mcInsert(vector, name) \
-    vector.insert(vector.begin()+ microcode.m_command_names[name], true);
+#define mcLine(...)\
+    do {\
+        std::map<std::vector<bool>::size_type,bool> command {}; \
+        command[microcode.m_command_names[__VA_ARGS__]] = true; \
+        microcode.Run(&command); \
+    } while(false)
 
-#define mcLine(lineName, ...) \
-    std::vector<bool> lineName; \
-    mcInsert(lineName, __VA_ARGS__);
+
+#define bind(x) std::bind(&x, this)
+
+#define stA "Bus -> Register A"
+#define ldA "Register A -> Bus"
