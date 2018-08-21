@@ -1,24 +1,26 @@
 #include <iostream>
-#include "VMCore.h"
-#include "Register.h"
+#include "Bus.h"
 #include "Microcode.h"
+#include "Register.h"
 #include "Util.h"
+#include "VMCore.h"
 
 int main(int argv, char* argc) {
-    Microcode microcode {};
-    VMCore vm {&microcode};
-    
-    Register reg("A");
+  std::shared_ptr<Microcode> microcode = shareM(Microcode());
+  VMCore vm{microcode};
 
-    vm.AddComponent(&reg);
-    vm.BusWrite(7);
-    
-    mcLine(stA);
-    vm.BusWrite(0);
-    std::cout << reg.m_value << std::endl;
-    mcLine(ldA);
+  Bus lBus{"L"};
+  lBus.SetValue(8);
 
-    std::cout << vm.BusRead() << std::endl;
+  Register regA("A");
+  vm.Add(&regA);
+  regA.AddBus(&lBus);
 
-	getchar();
+  mcLine(vm, stA);
+  lBus.SetValue(0);
+  mcLine(vm, ldA);
+
+  std::cout << lBus.GetValue() << std::endl;
+
+  getchar();
 }

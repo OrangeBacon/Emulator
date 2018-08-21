@@ -115,13 +115,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Bus.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Microcode.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="VMCore.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bus.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Microcode.h" />
     <ClInclude Include="Register.h" />

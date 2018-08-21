@@ -1,22 +1,19 @@
 #pragma once
-#include <vector>
 #include <cstdint>
+#include <memory>
+#include <vector>
+#include "Bus.h"
 #include "Component.h"
 #include "Microcode.h"
+#include "Util.h"
 
-class VMCore
-{
-public:
-	VMCore(Microcode* microcode);
-	~VMCore();
+class VMCore {
+ public:
+  VMCore(std::shared_ptr<Microcode> microcode);
 
-	void AddComponent(Component* comp);
-    void BusWrite(int16_t value);
-    int16_t BusRead();
+  void Add(Component* comp);
 
-public:
-    std::vector<Component*> m_components {};
-    std::shared_ptr<int16_t> m_bus;
-    Microcode* m_microcode;
+ public:
+  std::vector<Component*> m_components{};
+  const std::shared_ptr<Microcode> m_microcode;
 };
-

@@ -1,17 +1,12 @@
 #pragma once
 #include <cstdint>
 #include <iostream>
+#include <memory>
+#include "Bus.h"
 #include "Microcode.h"
 
-class Component
-{
-public:
-	Component();
-	virtual ~Component();
-
-    virtual void Initialise(std::shared_ptr<int16_t> bus, Microcode* microcode);
-
-protected:
-    std::shared_ptr<int16_t> m_bus;
+class Component {
+ public:
+  virtual void Initialise(std::shared_ptr<Microcode> microcode) = 0;
+  virtual void AddBus(Bus* bus) = 0;
 };
-
