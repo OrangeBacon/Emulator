@@ -6,7 +6,7 @@ void Register::Initialise(std::shared_ptr<Microcode> microcode) {
   m_microcode = microcode;
 }
 
-void Register::AddBus(Bus* bus) {
+void Register::AddBus(std::shared_ptr<Bus> bus) {
   m_busses[bus->m_name] = bus;
 
   m_microcode->AddCommand(std::bind(&Register::BusRead, this, bus->m_name),

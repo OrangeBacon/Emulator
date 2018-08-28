@@ -17,3 +17,5 @@ class VMCore {
   std::vector<Component*> m_components{};
   const std::shared_ptr<Microcode> m_microcode;
 };
+
+void mcLine(VMCore vm, std::initializer_list<const std::string> args);

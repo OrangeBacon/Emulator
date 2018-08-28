@@ -1,14 +1,15 @@
 #pragma once
 #include <functional>
+#include <memory>
 
-#define mcLine(vm, ...)                                           \
-  do {                                                            \
-    std::map<std::vector<bool>::size_type, bool> command{};       \
-    command[vm.m_microcode->m_command_names[__VA_ARGS__]] = true; \
-    vm.m_microcode->Run(&command);                                \
-  } while (false)
+#define stA "Bus Data -> Register A"
+#define ldA "Register A -> Bus Data"
+#define ldAl "Register A -> Bus L"
 
-#define shareM(name) std::make_shared<Microcode>(name)
+#define stB "Bus Data -> Register B"
+#define ldB "Register B -> Bus Data"
+#define ldBr "Register B -> Bus R"
 
-#define stA "Bus L -> Register A"
-#define ldA "Register A -> Bus L"
+#define stOut "Bus Data -> Register Out"
+
+#define add "Add"

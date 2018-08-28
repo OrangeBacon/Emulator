@@ -12,9 +12,6 @@ class Bus {
 
   const std::string m_name;
 
-  int16_t GetValue();
-  void SetValue(int16_t);
-
  private:
   std::shared_ptr<int16_t> m_bus;
 };

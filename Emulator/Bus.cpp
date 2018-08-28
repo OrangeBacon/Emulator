@@ -11,11 +11,3 @@ int16_t Bus::Read() {
 void Bus::Write(int16_t value) {
   *m_bus = value;
 }
-
-int16_t Bus::GetValue() {
-  return *m_bus;
-}
-
-void Bus::SetValue(int16_t value) {
-  *m_bus = value;
-}

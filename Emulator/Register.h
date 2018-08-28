@@ -10,14 +10,15 @@ class Register : public Component {
   Register(const std::string name);
 
   void Initialise(std::shared_ptr<Microcode> microcode) override;
-  void AddBus(Bus* bus);
+  void AddBus(std::shared_ptr<Bus> bus);
 
  private:
   void BusRead(std::string name);
   void BusWrite(std::string name);
 
+ public:
   int16_t m_value;
   std::string m_name;
   std::shared_ptr<Microcode> m_microcode;
-  std::map<std::string, Bus*> m_busses{};
+  std::map<std::string, std::shared_ptr<Bus>> m_busses{};
 };

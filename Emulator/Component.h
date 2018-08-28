@@ -8,5 +8,4 @@
 class Component {
  public:
   virtual void Initialise(std::shared_ptr<Microcode> microcode) = 0;
-  virtual void AddBus(Bus* bus) = 0;
 };
