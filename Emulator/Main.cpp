@@ -17,32 +17,32 @@ int main() {
   auto lBus = make_shared<Bus>(Bus{"L"});
   auto rBus = make_shared<Bus>(Bus{"R"});
 
-  Register regA{"A"};
-  vm.Add(&regA);
-  regA.AddBus(lBus);
-  regA.AddBus(dataBus);
+  auto regA = make_shared<Register>(Register{"A"});
+  vm.Add(regA);
+  regA->AddBus(lBus);
+  regA->AddBus(dataBus);
 
-  Register regB{"B"};
-  vm.Add(&regB);
-  regB.AddBus(rBus);
-  regB.AddBus(dataBus);
+  auto regB = make_shared<Register>(Register{"B"});
+  vm.Add(regB);
+  regB->AddBus(rBus);
+  regB->AddBus(dataBus);
 
-  Register regOut{"Out"};
-  vm.Add(&regOut);
-  regOut.AddBus(dataBus);
+  auto regOut = make_shared<Register>(Register{"Out"});
+  vm.Add(regOut);
+  regOut->AddBus(dataBus);
 
-  ALU alu{lBus, rBus, dataBus};
-  vm.Add(&alu);
+  auto alu = make_shared<ALU>(ALU{lBus, rBus, dataBus});
+  vm.Add(alu);
 
   dataBus->Write(7);
-  mcLine(vm, {stA});
+  microcode->Run({stA});
   dataBus->Write(8);
-  mcLine(vm, {stB});
+  microcode->Run({stB});
 
-  mcLine(vm, {ldAl, ldBr, add, stOut});
+  microcode->Run({ldAl, ldBr, add, stOut});
 
-  std::cout << regA.m_value << " + " << regB.m_value << " = " << regOut.m_value
-            << std::endl;
+  std::cout << regA->m_value << " + " << regB->m_value << " = "
+            << regOut->m_value << std::endl;
 
   getchar();
 }

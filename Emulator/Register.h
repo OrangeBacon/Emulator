@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdint>
 #include <iostream>
+#include <map>
 #include "Component.h"
 #include "Microcode.h"
 #include "Util.h"
